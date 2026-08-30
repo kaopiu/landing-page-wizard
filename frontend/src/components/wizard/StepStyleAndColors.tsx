@@ -127,6 +127,21 @@ export default function StepStyleAndColors({
         <p className="mt-1 text-sm text-neutral-500">בחרו חמישה צבעים שיגדירו את המראה של האתר</p>
       </div>
 
+      <label className="flex cursor-pointer items-start gap-2.5 rounded-xl border border-neutral-200 p-3.5 hover:border-indigo-300">
+        <input
+          type="checkbox"
+          checked={brief.flexibleColors}
+          onChange={(e) => onBriefChange({ ...brief, flexibleColors: e.target.checked })}
+          className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-indigo-600"
+        />
+        <span>
+          <span className="block text-sm font-medium text-neutral-800">אני לא קפדני/ת לגבי הגוונים המדויקים 🎨</span>
+          <span className="mt-0.5 block text-xs text-neutral-500">
+            תרגישו חופשי לכוונן את הצבעים כדי שיתאימו טוב יותר לסגנון שבחרתי — לא צריך להיצמד בדיוק לצבעים שבחרתי כאן
+          </span>
+        </span>
+      </label>
+
       <div className="grid grid-cols-2 gap-x-3 gap-y-5 sm:grid-cols-5">
         {COLOR_FIELDS.map((f) => {
           const value = colors[f.key];
@@ -157,21 +172,6 @@ export default function StepStyleAndColors({
           );
         })}
       </div>
-
-      <label className="flex cursor-pointer items-start gap-2.5 rounded-xl border border-neutral-200 p-3.5 hover:border-indigo-300">
-        <input
-          type="checkbox"
-          checked={brief.flexibleColors}
-          onChange={(e) => onBriefChange({ ...brief, flexibleColors: e.target.checked })}
-          className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-indigo-600"
-        />
-        <span>
-          <span className="block text-sm font-medium text-neutral-800">אני לא קפדני/ת לגבי הגוונים המדויקים 🎨</span>
-          <span className="mt-0.5 block text-xs text-neutral-500">
-            תרגישו חופשי לכוונן את הצבעים כדי שיתאימו טוב יותר לסגנון שבחרתי — לא צריך להיצמד בדיוק לצבעים שבחרתי כאן
-          </span>
-        </span>
-      </label>
 
       {recommended && (
         <div>
