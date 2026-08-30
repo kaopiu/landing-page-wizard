@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#FFFFFF" />
+
+  <title>התחלת פרויקט — בריף לדף נחיתה | סטודיו פרימיום</title>
+  <meta name="description" content="ממלאים בריף קצר וחכם — תוך 24 שעות נחזור עם הצעת מחיר ולוח זמנים מדויק לבניית דף הנחיתה שלכם." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="/start.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Assistant:wght@400;500;600;700&family=Heebo:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css?v=2" />
+</head>
+<body>
+
+  <header class="nav" role="banner">
+    <div class="container nav__inner">
+      <a href="index.html" class="brand" aria-label="דף הבית">
+        <span class="brand__mark" data-brand-initial>S</span>
+        <span data-brand-name>Studio Nova</span>
+      </a>
+      <nav class="nav__menu" aria-label="ניווט ראשי">
+        <ul class="nav__links">
+          <li><a href="index.html#portfolio" class="nav__link">עבודות</a></li>
+          <li><a href="index.html#process" class="nav__link">איך זה עובד</a></li>
+          <li><a href="index.html#why" class="nav__link">למה אנחנו</a></li>
+        </ul>
+      </nav>
+      <a href="index.html" class="btn btn--ghost nav__cta">חזרה לדף הבית</a>
+    </div>
+  </header>
+
+  <main id="main" class="wizard-shell">
+    <div class="container">
+
+      <form class="wizard" data-wizard novalidate autocomplete="on" aria-label="טופס בקשה לפרויקט">
+
+        <div class="wizard__head">
+          <span class="wizard__label" data-step-label>פרטי העסק</span>
+          <span class="wizard__count" data-step-counter>שלב <b>1</b> מתוך 7</span>
+        </div>
+        <div class="wizard__progress-bar" aria-hidden="true">
+          <div class="wizard__progress-fill" data-progress-fill></div>
+        </div>
+
+        <!-- STEP 1: Business info -->
+        <section class="wizard__step is-active" data-step data-title="פרטי העסק">
+          <h1 class="wizard__title">נכיר את העסק שלכם</h1>
+          <p class="wizard__desc">כדי לבנות דף מדויק — נתחיל בנקודות הבסיס: מי אתם, מה אתם עושים, ובמה אתם מתמחים.</p>
+
+          <div class="field-row">
+            <div class="field">
+              <label class="field__label" for="business_name">שם העסק <span class="field__required" aria-hidden="true">*</span></label>
+              <input class="input" id="business_name" name="business_name" type="text" placeholder="לדוגמה: אוליב אנד אוק" required />
+            </div>
+            <div class="field">
+              <label class="field__label" for="industry">תחום / ענף <span class="field__required" aria-hidden="true">*</span></label>
+              <input class="input" id="industry" name="industry" type="text" placeholder="מסעדנות, פינטק, בריאות…" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="business_desc">תיאור קצר של העסק <span class="field__required" aria-hidden="true">*</span></label>
+            <textarea class="textarea" id="business_desc" name="business_desc" placeholder="במשפט או שניים — מה העסק עושה, מה הבידול שלו, ולמי הוא פונה." required></textarea>
+            <span class="field__hint">2–3 משפטים מספיקים. כתבו כפי שהייתם מסבירים לחבר.</span>
+          </div>
+        </section>
+
+        <!-- STEP 2: Goal -->
+        <section class="wizard__step" data-step data-title="מטרת הדף">
+          <h2 class="wizard__title">מה המטרה של הדף?</h2>
+          <p class="wizard__desc">כל פיקסל בדף עובד מול המטרה. בחרו את התוצאה המדויקת שאתם רוצים מהדף.</p>
+
+          <div class="field">
+            <span class="field__label">סוג הדף <span class="field__required" aria-hidden="true">*</span></span>
+            <div class="options" role="radiogroup" aria-label="סוג הדף">
+              <label class="option">
+                <input type="radio" name="goal_type" value="leads" required />
+                <span class="option__title">ליצירת לידים</span>
+                <span class="option__desc">טופס, שיחת ייעוץ, הצעת מחיר</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="goal_type" value="sales" />
+                <span class="option__title">למכירות ישירות</span>
+                <span class="option__desc">מוצר, קורס, הרשמה בתשלום</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="goal_type" value="contact" />
+                <span class="option__title">ליצירת קשר</span>
+                <span class="option__desc">שיחת היכרות, פגישה</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="goal_type" value="event" />
+                <span class="option__title">לאירוע / השקה</span>
+                <span class="option__desc">וובינר, כנס, סדנה</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="primary_cta">מה ה-CTA הראשי? <span class="field__required" aria-hidden="true">*</span></label>
+            <input class="input" id="primary_cta" name="primary_cta" type="text" placeholder="לדוגמה: קבעו שיחת ייעוץ חינם" required />
+            <span class="field__hint">הטקסט שיופיע על הכפתור הראשי בדף.</span>
+          </div>
+        </section>
+
+        <!-- STEP 3: Audience -->
+        <section class="wizard__step" data-step data-title="קהל יעד">
+          <h2 class="wizard__title">למי אנחנו מדברים?</h2>
+          <p class="wizard__desc">הכרת הקהל היא מה שהופך דף נחיתה מגנרי למדויק. ככל שתהיו ספציפיים יותר — נדבר בשפה שלהם טוב יותר.</p>
+
+          <div class="field">
+            <label class="field__label" for="audience">קהל היעד <span class="field__required" aria-hidden="true">*</span></label>
+            <textarea class="textarea" id="audience" name="audience" placeholder="לדוגמה: בעלי עסקים עצמאיים בגילאי 30–50, במרכז הארץ, שמחפשים להגדיל הכנסות דרך שיווק דיגיטלי." required></textarea>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="pain_points">מה ה-Pain Points שלהם?</label>
+            <textarea class="textarea" id="pain_points" name="pain_points" placeholder="אילו בעיות, תסכולים או שאלות לא פתורות יש להם — לפני שהם מוצאים אתכם?"></textarea>
+            <span class="field__hint">לא חובה, אבל זה יעזור לנו לכתוב קופי ממוקד.</span>
+          </div>
+        </section>
+
+        <!-- STEP 4: Content -->
+        <section class="wizard__step" data-step data-title="תוכן">
+          <h2 class="wizard__title">מה התוכן של הדף?</h2>
+          <p class="wizard__desc">כתבו מה שיש — אנחנו נלטש, נחדד ונעצב. אין צורך לכתוב גרסה סופית.</p>
+
+          <div class="field">
+            <label class="field__label" for="services">שירותים / מוצרים <span class="field__required" aria-hidden="true">*</span></label>
+            <textarea class="textarea" id="services" name="services" placeholder="פרטו את המוצרים או השירותים המופיעים בדף. אפשר ברשימה." required></textarea>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="content_text">תוכן טקסטואלי נוסף</label>
+            <textarea class="textarea" id="content_text" name="content_text" placeholder="סיפור המותג, ציטוטים, המלצות לקוחות, שאלות נפוצות — כל דבר שיעזור לנו."></textarea>
+          </div>
+
+          <div class="field">
+            <span class="field__label">קבצים ותמונות</span>
+            <div class="upload-placeholder">
+              <b>ישלחו אחרי שליחת הבריף.</b>
+              <br />נצרף לכם תיקיית Google Drive ייעודית תוך 24 שעות לכל הנכסים (לוגו, תמונות, סרטונים).
+            </div>
+          </div>
+        </section>
+
+        <!-- STEP 5: Design preferences -->
+        <section class="wizard__step" data-step data-title="העדפות עיצוב">
+          <h2 class="wizard__title">מה הכיוון הוויזואלי?</h2>
+          <p class="wizard__desc">בחרו את הסגנון והוייב שהכי מתאימים למותג. זה נקודת פתיחה — נחדד יחד בסקיצה.</p>
+
+          <div class="field">
+            <span class="field__label">סגנון <span class="field__required" aria-hidden="true">*</span></span>
+            <div class="options" role="radiogroup" aria-label="סגנון">
+              <label class="option">
+                <input type="radio" name="style" value="editorial" required />
+                <span class="option__title">Editorial</span>
+                <span class="option__desc">מגזיני, טיפוגרפי, נשימה</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="style" value="minimal" />
+                <span class="option__title">Minimal</span>
+                <span class="option__desc">נקי, מרווח, שקט</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="style" value="bold" />
+                <span class="option__title">Bold</span>
+                <span class="option__desc">צבע, תנועה, נוכחות</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="style" value="classic" />
+                <span class="option__title">Classic</span>
+                <span class="option__desc">שמרני, אמין, חם</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field__label">וייב <span class="field__required" aria-hidden="true">*</span></span>
+            <div class="options" role="radiogroup" aria-label="וייב">
+              <label class="option">
+                <input type="radio" name="vibe" value="clean" required />
+                <span class="option__title">Clean</span>
+                <span class="option__desc">אוויר, סדר</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="vibe" value="bold" />
+                <span class="option__title">Bold</span>
+                <span class="option__desc">נוכחות חזקה</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="vibe" value="luxury" />
+                <span class="option__title">Luxury</span>
+                <span class="option__desc">פרימיום, מדויק</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="vibe" value="tech" />
+                <span class="option__title">Tech</span>
+                <span class="option__desc">מודרני, ממוחשב</span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- STEP 6: SEO -->
+        <section class="wizard__step" data-step data-title="SEO">
+          <h2 class="wizard__title">קידום אורגני (SEO)</h2>
+          <p class="wizard__desc">נטמיע בדף את ההיבטים הטכניים של SEO — כותרות, תיאורים, סכמה וביצועים. כמה נתונים מהעולם שלכם יעזרו לנו למקד.</p>
+
+          <div class="field">
+            <label class="field__label" for="keywords">מילות מפתח עיקריות</label>
+            <input class="input" id="keywords" name="keywords" type="text" placeholder="לדוגמה: דפי נחיתה, עיצוב דפי נחיתה, לנדינג פייג'" />
+            <span class="field__hint">בין 3–7 ביטויים מרכזיים, מופרדים בפסיקים.</span>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label class="field__label" for="location">מיקום / אזור שירות</label>
+              <input class="input" id="location" name="location" type="text" placeholder="תל אביב, מרכז, ארצי" />
+            </div>
+            <div class="field">
+              <label class="field__label" for="competitors">מתחרים עיקריים</label>
+              <input class="input" id="competitors" name="competitors" type="text" placeholder="2–3 אתרים (URL)" />
+            </div>
+          </div>
+        </section>
+
+        <!-- STEP 7: Contact -->
+        <section class="wizard__step" data-step data-title="פרטי קשר">
+          <h2 class="wizard__title">אחרון — איך נחזור אליכם?</h2>
+          <p class="wizard__desc">תוך 24 שעות נשלח הצעת מחיר מדויקת ולוח זמנים מחייב ישירות למייל.</p>
+
+          <div class="field">
+            <label class="field__label" for="name">שם מלא <span class="field__required" aria-hidden="true">*</span></label>
+            <input class="input" id="name" name="name" type="text" autocomplete="name" placeholder="ישראל ישראלי" required />
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label class="field__label" for="phone">טלפון <span class="field__required" aria-hidden="true">*</span></label>
+              <input class="input" id="phone" name="phone" type="tel" autocomplete="tel" placeholder="050-0000000" required />
+            </div>
+            <div class="field">
+              <label class="field__label" for="email">אימייל <span class="field__required" aria-hidden="true">*</span></label>
+              <input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required />
+            </div>
+          </div>
+        </section>
+
+        <div class="wizard__error" role="alert" data-error></div>
+
+        <div class="wizard__actions">
+          <button type="button" class="btn btn--ghost" data-back>חזרה</button>
+          <button type="button" class="btn btn--primary" data-next>המשך</button>
+          <button type="submit" class="btn btn--accent" data-submit style="display:none">שליחת הבריף</button>
+        </div>
+      </form>
+
+    </div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <p class="footer__credit">© <span data-year>2026</span> <b data-brand-name>Studio Nova</b>. כל הזכויות שמורות.</p>
+      <div class="footer__meta">
+        <a href="mailto:hello@example.com">hello@example.com</a>
+        <a href="index.html">דף הבית</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
