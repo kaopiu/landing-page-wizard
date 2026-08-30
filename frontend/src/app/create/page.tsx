@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { WizardNav, WizardProgress } from "@/components/wizard/WizardShell";
 import StepInfo, { isStepInfoValid } from "@/components/wizard/StepInfo";
@@ -50,6 +50,10 @@ export default function CreatePage() {
     }),
     [info, colors, styleBrief, sections],
   );
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [step]);
 
   const canProceed = [
     isStepInfoValid(info, styleBrief),
