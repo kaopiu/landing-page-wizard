@@ -47,7 +47,7 @@ export default function StepContent({
                 type="button"
                 onClick={() => setActiveId(s.id)}
                 className={
-                  "flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors " +
+                  "flex touch-manipulation items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors " +
                   (isActive ? "bg-indigo-600 text-white" : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200")
                 }
               >

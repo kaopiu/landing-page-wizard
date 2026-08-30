@@ -127,7 +127,7 @@ export default function StepSections({
                 disabled={locked}
                 onClick={() => addSection(def.type)}
                 className={
-                  "flex items-start gap-3 rounded-xl border p-4 text-right transition-colors " +
+                  "flex touch-manipulation items-start gap-3 rounded-xl border p-4 text-right transition-colors " +
                   (locked
                     ? "cursor-not-allowed border-neutral-200 opacity-60"
                     : "border-neutral-200 hover:border-indigo-300 hover:bg-indigo-50/40")

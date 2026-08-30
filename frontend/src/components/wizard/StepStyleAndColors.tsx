@@ -59,7 +59,7 @@ export default function StepStyleAndColors({
                 type="button"
                 onClick={() => onBriefChange({ ...brief, stylePreset: preset.value })}
                 className={
-                  "flex items-start gap-3 rounded-xl border p-4 text-right transition-all " +
+                  "flex touch-manipulation items-start gap-3 rounded-xl border p-4 text-right transition-all " +
                   (selected
                     ? "border-indigo-500 bg-indigo-50/60 ring-2 ring-indigo-200"
                     : "border-neutral-200 hover:border-indigo-300 hover:bg-indigo-50/30")
@@ -127,35 +127,6 @@ export default function StepStyleAndColors({
         <p className="mt-1 text-sm text-neutral-500">בחרו חמישה צבעים שיגדירו את המראה של האתר</p>
       </div>
 
-      {recommended && (
-        <div>
-          <p className="mb-2 text-sm font-medium text-neutral-700">
-            פלטות מומלצות לסגנון &quot;{selectedPresetLabel}&quot; ✨
-          </p>
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
-            {recommended.map((rec) => (
-              <button
-                key={rec.label}
-                type="button"
-                onClick={() => onColorsChange(rec.colors)}
-                className="flex items-center gap-2.5 rounded-xl border border-neutral-200 p-3 text-right transition-colors hover:border-indigo-300 hover:bg-indigo-50/40"
-              >
-                <span className="flex shrink-0 -space-x-2 rtl:space-x-reverse">
-                  {COLOR_FIELDS.map((f) => (
-                    <span
-                      key={f.key}
-                      className="h-6 w-6 rounded-full border-2 border-white shadow-sm"
-                      style={{ background: rec.colors[f.key] }}
-                    />
-                  ))}
-                </span>
-                <span className="truncate text-xs font-medium text-neutral-700">{rec.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-
       <div className="grid grid-cols-2 gap-x-3 gap-y-5 sm:grid-cols-5">
         {COLOR_FIELDS.map((f) => {
           const value = colors[f.key];
@@ -201,6 +172,35 @@ export default function StepStyleAndColors({
           </span>
         </span>
       </label>
+
+      {recommended && (
+        <div>
+          <p className="mb-2 text-sm font-medium text-neutral-700">
+            פלטות מומלצות לסגנון &quot;{selectedPresetLabel}&quot; ✨
+          </p>
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+            {recommended.map((rec) => (
+              <button
+                key={rec.label}
+                type="button"
+                onClick={() => onColorsChange(rec.colors)}
+                className="flex touch-manipulation items-center gap-2.5 rounded-xl border border-neutral-200 p-3 text-right transition-colors hover:border-indigo-300 hover:bg-indigo-50/40"
+              >
+                <span className="flex shrink-0 -space-x-2 rtl:space-x-reverse">
+                  {COLOR_FIELDS.map((f) => (
+                    <span
+                      key={f.key}
+                      className="h-6 w-6 rounded-full border-2 border-white shadow-sm"
+                      style={{ background: rec.colors[f.key] }}
+                    />
+                  ))}
+                </span>
+                <span className="truncate text-xs font-medium text-neutral-700">{rec.label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       <PalettePreview colors={colors} businessName={businessName} />
     </div>

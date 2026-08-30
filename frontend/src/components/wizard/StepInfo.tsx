@@ -95,7 +95,7 @@ export default function StepInfo({
                 type="button"
                 onClick={() => onBriefChange({ ...brief, goal: goal.value })}
                 className={
-                  "flex flex-col items-center gap-1.5 rounded-xl border p-4 text-center transition-all " +
+                  "flex touch-manipulation flex-col items-center gap-1.5 rounded-xl border p-4 text-center transition-all " +
                   (selected
                     ? "border-indigo-500 bg-indigo-50/60 ring-2 ring-indigo-200"
                     : "border-neutral-200 hover:border-indigo-300 hover:bg-indigo-50/30")
