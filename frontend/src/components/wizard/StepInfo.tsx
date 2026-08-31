@@ -3,15 +3,27 @@
 import { GOALS, INDUSTRIES } from "@/lib/styleBrief";
 import type { BusinessInfo, StyleBrief } from "@/lib/types";
 
+function isEmailValid(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 export function isStepInfoValid(info: BusinessInfo, brief: StyleBrief) {
-  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(info.email);
   return (
     info.name.trim().length > 0 &&
     info.description.trim().length > 0 &&
-    emailOk &&
+    isEmailValid(info.email) &&
     brief.industry !== "" &&
     brief.goal !== ""
   );
+}
+
+const inputBase =
+  "w-full rounded-lg border px-4 py-2.5 text-sm outline-none focus:ring-2 ";
+const inputOk = "border-neutral-300 focus:border-indigo-500 focus:ring-indigo-100";
+const inputError = "border-red-400 focus:border-red-500 focus:ring-red-100";
+
+function FieldError({ children }: { children: string }) {
+  return <p className="mt-1 text-xs font-medium text-red-600">{children}</p>;
 }
 
 export default function StepInfo({
@@ -19,18 +31,33 @@ export default function StepInfo({
   onChange,
   brief,
   onBriefChange,
+  showErrors,
 }: {
   info: BusinessInfo;
   onChange: (info: BusinessInfo) => void;
   brief: StyleBrief;
   onBriefChange: (brief: StyleBrief) => void;
+  showErrors: boolean;
 }) {
+  const nameMissing = showErrors && info.name.trim().length === 0;
+  const descMissing = showErrors && info.description.trim().length === 0;
+  const emailInvalid = showErrors && !isEmailValid(info.email);
+  const industryMissing = showErrors && brief.industry === "";
+  const goalMissing = showErrors && brief.goal === "";
+  const hasAnyError = nameMissing || descMissing || emailInvalid || industryMissing || goalMissing;
+
   return (
     <div className="space-y-5">
       <div>
         <h2 className="text-xl font-bold text-neutral-900">פרטי העסק</h2>
         <p className="mt-1 text-sm text-neutral-500">בואו נכיר את העסק שלכם</p>
       </div>
+
+      {hasAnyError && (
+        <p className="rounded-lg bg-red-50 px-4 py-2.5 text-sm font-medium text-red-700">
+          יש להשלים או לתקן את השדות המסומנים באדום למטה כדי להמשיך
+        </p>
+      )}
 
       <label className="block">
         <span className="mb-1.5 block text-sm font-medium text-neutral-700">שם העסק</span>
@@ -39,8 +66,9 @@ export default function StepInfo({
           value={info.name}
           onChange={(e) => onChange({ ...info, name: e.target.value })}
           placeholder="לדוגמה: מספרת דן"
-          className="w-full rounded-lg border border-neutral-300 px-4 py-2.5 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+          className={inputBase + (nameMissing ? inputError : inputOk)}
         />
+        {nameMissing && <FieldError>נא להזין את שם העסק</FieldError>}
       </label>
 
       <label className="block">
@@ -50,8 +78,9 @@ export default function StepInfo({
           onChange={(e) => onChange({ ...info, description: e.target.value })}
           placeholder="במה אתם עוסקים, למי אתם פונים ומה מייחד אתכם"
           rows={4}
-          className="w-full resize-none rounded-lg border border-neutral-300 px-4 py-2.5 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+          className={inputBase + "resize-none " + (descMissing ? inputError : inputOk)}
         />
+        {descMissing && <FieldError>נא להזין תיאור קצר של העסק</FieldError>}
       </label>
 
       <label className="block">
@@ -62,8 +91,11 @@ export default function StepInfo({
           value={info.email}
           onChange={(e) => onChange({ ...info, email: e.target.value })}
           placeholder="you@business.co.il"
-          className="w-full rounded-lg border border-neutral-300 px-4 py-2.5 text-sm text-right outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+          className={inputBase + "text-right " + (emailInvalid ? inputError : inputOk)}
         />
+        {emailInvalid && (
+          <FieldError>{info.email.trim() === "" ? "נא להזין כתובת אימייל" : "כתובת האימייל לא תקינה"}</FieldError>
+        )}
       </label>
 
       <label className="block">
@@ -71,7 +103,7 @@ export default function StepInfo({
         <select
           value={brief.industry}
           onChange={(e) => onBriefChange({ ...brief, industry: e.target.value })}
-          className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+          className={inputBase + "bg-white " + (industryMissing ? inputError : inputOk)}
         >
           <option value="" disabled>
             בחרו תחום
@@ -82,11 +114,17 @@ export default function StepInfo({
             </option>
           ))}
         </select>
+        {industryMissing && <FieldError>נא לבחור תחום עיסוק</FieldError>}
       </label>
 
       <div>
         <p className="mb-2 text-sm font-medium text-neutral-700">מה המטרה העיקרית של האתר?</p>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+        <div
+          className={
+            "grid grid-cols-1 gap-3 rounded-xl sm:grid-cols-3 " +
+            (goalMissing ? "outline outline-2 outline-offset-4 outline-red-400" : "")
+          }
+        >
           {GOALS.map((goal) => {
             const selected = brief.goal === goal.value;
             return (
@@ -112,6 +150,7 @@ export default function StepInfo({
             );
           })}
         </div>
+        {goalMissing && <FieldError>נא לבחור מטרה עיקרית לאתר</FieldError>}
       </div>
     </div>
   );

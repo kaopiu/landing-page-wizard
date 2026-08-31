@@ -37,6 +37,7 @@ export default function CreatePage() {
   const [styleBrief, setStyleBrief] = useState<StyleBrief>(DEFAULT_STYLE_BRIEF);
   const [colors, setColors] = useState<ColorScheme>(DEFAULT_COLORS);
   const [sections, setSections] = useState<SectionInstance[]>([]);
+  const [showErrors, setShowErrors] = useState(false);
 
   const payload: SubmissionPayload = useMemo(
     () => ({
@@ -64,9 +65,15 @@ export default function CreatePage() {
   ][step];
 
   function next() {
+    if (!canProceed) {
+      setShowErrors(true);
+      return;
+    }
+    setShowErrors(false);
     setStep((s) => Math.min(s + 1, LAST_STEP));
   }
   function back() {
+    setShowErrors(false);
     setStep((s) => Math.max(s - 1, 0));
   }
 
@@ -86,7 +93,13 @@ export default function CreatePage() {
 
         <div className="mt-4 rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-8">
           {step === 0 && (
-            <StepInfo info={info} onChange={setInfo} brief={styleBrief} onBriefChange={setStyleBrief} />
+            <StepInfo
+              info={info}
+              onChange={setInfo}
+              brief={styleBrief}
+              onBriefChange={setStyleBrief}
+              showErrors={showErrors}
+            />
           )}
           {step === 1 && (
             <StepStyleAndColors

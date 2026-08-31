@@ -81,8 +81,11 @@ export function WizardNav({
         <button
           type="button"
           onClick={onNext}
-          disabled={nextDisabled}
-          className="rounded-lg bg-indigo-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
+          aria-disabled={nextDisabled}
+          className={
+            "rounded-lg bg-indigo-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90 " +
+            (nextDisabled ? "opacity-40" : "")
+          }
         >
           {nextLabel}
         </button>
